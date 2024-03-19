@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rompecabezas de 4 piezas</title>
+<style>
+  .puzzle-piece {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 100px;
+    text-align: center;
+  }
+
+  #puzzle-container {
+    text-align: center;
+  }
+
+  #info {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div id="puzzle-container">
+  <div class="puzzle-piece" id="Rojo" style="background-color: red;">Rojo</div>
+  <div class="puzzle-piece" id="Azul" style="background-color: blue;">Azul</div>
+  <div class="puzzle-piece" id="Verde" style="background-color: green;">Verde</div>
+  <div class="puzzle-piece" id="Amarillo" style="background-color: yellow;">Amarillo</div>
+</div>
+
+<div id="info"></div>
+
+<script>
+  const puzzlePieces = document.querySelectorAll('.puzzle-piece');
+  const infoDiv = document.getElementById('info');
+
+  puzzlePieces.forEach(piece => {
+    piece.addEventListener('click', () => {
+      const pieceColor = piece.style.backgroundColor;
+      const pieceId = piece.id;
+      let message = `La pieza seleccionada es de color ${pieceId}. `;
+      
+      switch(pieceColor) {
+        case 'red':
+          message += "Es la rotación de tareas. En este enfoque, los empleados cambian regularmente las tareas que realizan dentro de un equipo o departamento. Esto puede ayudar a mantener alta la motivación y el compromiso de los empleados al evitar la monotonía y proporcionar oportunidades para el desarrollo de habilidades múltiples. Además, la rotación de tareas puede ayudar a aumentar la flexibilidad del equipo al permitir que los miembros estén capacitados en diferentes áreas funcionales.";
+          break;
+        case 'blue':
+          message += "Es la ampliación de tareas. La ampliación de tareas implica asignar a los empleados una gama más amplia de responsabilidades relacionadas entre sí. En lugar de realizar una tarea específica repetitiva, los empleados pueden encargarse de una serie de tareas relacionadas que abarcan un espectro más amplio de habilidades y conocimientos. Esto puede aumentar la satisfacción laboral al proporcionar variedad y desafíos, así como fomentar el desarrollo profesional al permitir a los empleados adquirir nuevas habilidades.";
+          break;
+        case 'green':
+          message += "Es el enriquecimiento de tareas. El enriquecimiento de tareas implica brindar a los empleados mayores niveles de autonomía, control y significado en el trabajo que realizan. Esto puede lograrse proporcionando oportunidades para la toma de decisiones, la autorregulación y la participación en la planificación y ejecución de proyectos. El enriquecimiento de tareas se centra en aumentar la satisfacción laboral y la motivación al permitir que los empleados se involucren más profundamente en su trabajo y encuentren un mayor sentido de logro y realización.";
+          break;
+        case 'yellow':
+          message += "Es el trabajo en grupos. El trabajo en grupos implica que los empleados colaboran y trabajan juntos en proyectos, tareas o actividades específicas. Esta forma de organización de trabajo fomenta la comunicación, la colaboración y el intercambio de ideas entre los miembros del grupo, lo que puede conducir a un mayor nivel de creatividad, eficiencia y resolución de problemas. El trabajo en grupo también puede promover un sentido de pertenencia y cohesión dentro del equipo, así como proporcionar oportunidades para el aprendizaje y el desarrollo interpersonal.";
+          break;
+        default:
+          message += "No se ha encontrado información para este color.";
+      }
+
+      infoDiv.innerText = message;
+      infoDiv.style.fontSize = "16px"; // Aumentar el tamaño del texto
+      infoDiv.style.fontFamily = "Verdana, sans-serif"; // Cambiar el tipo de letra
+    });
+  });
+</script>
+
+</body>
+</html>
